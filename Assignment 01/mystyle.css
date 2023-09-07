@@ -1,4 +1,4 @@
-h1{
+/* h1{
     color: grey;
     font-size: 50px;
     text-align: center;
@@ -9,6 +9,66 @@ body{
 }
 img{
 
-   border-radius: 8px;
+   border-radius: 10px;
     width: 10%;
+} */
+
+
+
+/* Reset some default styles */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
 }
+
+/* Apply a background color and font styles to the header */
+header {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the contact section */
+.contact {
+    margin: 20px;
+}
+
+/* Style the education and experience sections */
+.education, .experience {
+    margin: 20px;
+}
+
+/* Style the skills section */
+.skills {
+    margin: 20px;
+}
+
+/* Style the languages section */
+.languages {
+    margin: 20px;
+}
+
+/* Style the footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
