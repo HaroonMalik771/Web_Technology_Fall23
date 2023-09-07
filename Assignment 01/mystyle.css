@@ -7,8 +7,8 @@ h1{
 body{
     background-color: #D3D3D3;
 }
-imgg{
-    
-   
-    width: 50%;
+img{
+
+   border-radius: 8px;
+    width: 10%;
 }
