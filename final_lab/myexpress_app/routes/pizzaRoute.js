@@ -7,7 +7,6 @@ router.post('/add', validatePizza, pizzaController.createPizza);
 
 
 router.get('/add', pizzaController.addPizzaForm);
-// router.post('/add', pizzaController.createPizza);
 router.get('/', pizzaController.listPizzas);
 router.get('/edit/:id', pizzaController.editPizzaForm);
 router.post('/update/:id', pizzaController.updatePizza);

@@ -1,0 +1,9 @@
+
+<form action="/pizzas/update/<%= pizza._id %>" method="post">
+    <input type="text" name="name" placeholder="Pizza Name" value="<%= pizza.name %>" required>
+  
+    <textarea name="toppings" placeholder="Toppings (comma separated)" required><%= pizza.toppings.join(', ') %></textarea>
+    <input type="number" name="price" placeholder="Price" value="<%= pizza.price %>" required min="0" step="0.01">
+    <button type="submit">Update Pizza</button>
+  </form>
+  

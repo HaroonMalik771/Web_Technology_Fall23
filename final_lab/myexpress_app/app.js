@@ -1,60 +1,45 @@
+
+
 const express = require('express');
 const mongoose = require('mongoose');
-const expressEjsLayouts = require('express-ejs-layouts');
-const User = require('./models/userModel');
+const bodyParser = require('body-parser');
+const path = require('path');
+
 const app = express();
 
-// Connect to MongoDB
+
+
 mongoose.connect('mongodb://127.0.0.1:27017/mydatabase')
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB', err));
 
-
- 
-
-const newUser = new User({
-    email: 'peter@gmail.com',
-    password: 'haroon12345'
-}); 
-
-newUser.save()
-    .then(user => console.log(user))
-    .catch(error => console.error(error));
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
+app.use(express.static(path.join(__dirname, 'public')));
 
-const path = require('path');
+
 app.set('views', path.join(__dirname, 'views'));
-
-
-// EJS setup
 app.set('view engine', 'ejs');
-app.use(expressEjsLayouts);
 
-app.set('layout', 'layouts/layout');
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
 
+// Routes for Pizzas
+const pizzaRoutes = require('./routes/pizzaRoute');
+app.use('/pizzas', pizzaRoutes);
 
-// Static files
-app.use(express.static('public'));
+// Routes for Users
+const userRoutes = require('./routes/userRoute');
+app.use('/users', userRoutes);
 
-// Routes
-const indexRouter = require('./routes/index');
-app.use('/', indexRouter);
-
-// Server start
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
-
-
-
-
-
-
-
-
-
-
-
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 
 

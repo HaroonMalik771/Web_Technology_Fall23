@@ -7,7 +7,6 @@ router.post('/add', validateUser, userController.createUser);
 
 
 router.get('/add', userController.registerForm);
-// router.post('/register', userController.createUser);
 router.get('/', userController.listUsers);
 router.get('/edit/:id', userController.editUserForm);
 router.post('/update/:id', userController.updateUser);

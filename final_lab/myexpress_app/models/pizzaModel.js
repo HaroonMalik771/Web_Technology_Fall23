@@ -1,18 +1,27 @@
 const mongoose = require('mongoose');
 
 const pizzaSchema = new mongoose.Schema({
-    name: {type: String, require},
-    varients: [],
-    prices: [],
-    category: {type: String, require},
-    image: {type: String, require},
-    description: {type: String, require},
-},
+    name: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    toppings: {
+        type: [String],
+        required: true,
+        validate: {
+            validator: (toppings) => toppings.length > 0,
+            message: 'At least one topping is required.',
+        },
+    },
+    price: {
+        type: Number,
+        required: true,
+        min: 0,
+    },
+});
 
-{
-    timestamps: true,
-}
-);
+const Pizza = mongoose.model('Pizzas', pizzaSchema);
 
-const pizzaModel = mongoose.model("pizzas", pizzaSchema);
-module.exports = pizzaModel;
+module.exports = Pizza;
+

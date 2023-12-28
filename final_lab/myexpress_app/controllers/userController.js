@@ -1,7 +1,7 @@
 const User = require('../models/userModel');
 
 exports.registerForm = (req, res) => {
-    res.render('users/register');
+    res.render('users/add');
 };
 
 exports.createUser = async (req, res) => {
